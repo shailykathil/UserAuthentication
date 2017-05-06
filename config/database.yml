@@ -1,6 +1,6 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: my_db_name
+  database: user1_db
   username: root
   password: root

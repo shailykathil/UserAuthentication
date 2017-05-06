@@ -25,7 +25,6 @@ class StatesController < ApplicationController
   # POST /states.json
   def create
     @state = State.new(state_params)
-
     respond_to do |format|
       if @state.save
         format.html { redirect_to @state, notice: 'State was successfully created.' }
@@ -61,6 +60,10 @@ class StatesController < ApplicationController
     end
   end
 
+  def get_states
+    @states= State.where(:country_id=>params[:country])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_state
@@ -69,6 +72,6 @@ class StatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def state_params
-      params.require(:state).permit(:state_name)
+      params.require(:state).permit(:state_name, :country_id)
     end
 end
