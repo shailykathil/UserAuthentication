@@ -11,15 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :country_name %>
-    <%= f.text_field :country_name %>
+ <div class="form-group">
+    <%= f.label :country_name , :class=>"col-sm-2 control-label"%>
+     <div class="col-sm-4  inputGroupContainer">
+    <%= f.text_field :country_name , :placeholder => "Country Name",:class=>"form-control"%>
   </div>
- <div class="field">
-    <%= f.label :code %>
-    <%= f.text_field :code %>
   </div>
+    <br><br>
+ <div class="form-group">
+    <%= f.label :code , :class=>"col-sm-2 control-label"%>
+     <div class="col-sm-4  inputGroupContainer">
+    <%= f.text_field :code , :placeholder => "Type code",:class=>"form-control"%>
+  </div>
+  </div>
+  <br><br>
   <div class="actions">
-    <%= f.submit %>
+   <div class="col-sm-2  inputGroupContainer">
+    <%= f.submit :class=>"btn btn-success" %>
+    </div>
   </div>
 <% end %>

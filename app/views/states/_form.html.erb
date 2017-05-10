@@ -11,15 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :state_name %>
-    <%= f.text_field :state_name %>
+    <div class="form-group">
+    <%= f.label :state_name, :class=>"col-sm-2 control-label" %>
+    <div class="col-sm-4  inputGroupContainer">
+    <%= f.text_field :state_name, :placeholder => "State Name",:class=>"form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :country_id %>
-    <%= f.select(:country_id, Country.all.collect {|u| [u.country_name, u.id]},:prompt => 'Select Country') %>
   </div>
+  <br><br>
+   <div class="form-group">
+    <%= f.label :country_id , :class=>"col-sm-2 control-label"%>
+    <div class="col-sm-4  inputGroupContainer">
+    <%= f.select(:country_id, Country.all.collect {|u| [u.country_name, u.id]},{},:prompt => 'Select Country',:class=>"form-control") %>
+  </div>
+  </div>
+  <br><br>
   <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="col-sm-2  inputGroupContainer">
+    <%= f.submit :class=>"btn btn-success" %>
+    </div>
+    </div>
 <% end %>

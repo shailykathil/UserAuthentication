@@ -4,4 +4,5 @@ class Company < ApplicationRecord
 	belongs_to :city
 	has_many  :places
 	has_many  :users
+    has_many :images, as: :imagable
 end

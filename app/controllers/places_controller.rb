@@ -28,6 +28,7 @@ class PlacesController < ApplicationController
 
     respond_to do |format|
       if @place.save
+        Node.create(:node_name=> params[:place][:node_name], :place_id=> @place.id)
         format.html { redirect_to @place, notice: 'Place was successfully created.' }
         format.json { render :show, status: :created, location: @place }
       else

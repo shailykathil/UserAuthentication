@@ -1,3 +1,4 @@
+<div class="containner">
 <%= form_for(user_region) do |f| %>
   <% if user_region.errors.any? %>
     <div id="error_explanation">
@@ -11,12 +12,54 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :region_name %>
-    <%= f.text_field :region_name %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit %>
+<div class="form-group">
+        <label class="col-sm-2 control-label">UserName</label>
+        <div class="col-md-3  inputGroupContainer">
+          <%= f.select(:user_id, User.all.collect {|u| [u.first_name, u.id]},{},:prompt => 'Select username',:class=>"form-control") %>
+          </div>
+          </div></br></br></br></br>
+     <div class="inline">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Region</label>
+        <div class="col-md-3  inputGroupContainer">
+         <%= f.select(:region_id, Region.find(Region.ids - UserRegion.all.map(&:region_id).uniq).collect {|u| [u.region_name, u.id]},:prompt => 'Select Region',:class=>"form-control") %>  
+          </div>
+          </div>
+       <div class="form-group">
+       <div class="col-sm-1 inputGroupContainer">
+       <%=link_to 'add',:id=>'left'%>
+       </div>
+       </div>
+       </br></br>
+       <div class="form-group">
+       <label class="col-sm-5 control-label"></label>
+       <div class="col-sm-3  inputGroupContainer">
+       <%=link_to 'remove',:id=>'right'%>
+       </div>
+       </div>
+      <div class="form-group">
+        <label class="col-sm-1 control-label"></label>
+        <div class="col-sm-2  inputGroupContainer">
+       <%#= f.text_area :text, value: "aaa", :size => "15x5" %>
+       <ul>
+        <% UserRegion.all.each do  |region| %>
+         <% if region.right == true %>
+         <li>
+              <%= Region.find(region.region_id).region_name%>
+         </li>
+        <% end %>
+        <% end %>
+       </ul>
+  </div>
+  </div>
+  </br></br></br></br><br></br></br></br></br>
+    <div class="form-group">
+        <label class="col-sm-2 control-label"></label>
+        <div class="col-sm-3  inputGroupContainer">
+    <%= f.submit "save", :class=>"btn btn-success"%>
+  </div>
   </div>
 <% end %>
+</div>
+

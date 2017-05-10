@@ -2,7 +2,7 @@
 
 <h1>Countries</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Country name</th>
@@ -14,9 +14,9 @@
     <% @countries.each do |country| %>
       <tr>
         <td><%= country.country_name %></td>
-        <td><%= link_to 'Show', country %></td>
-        <td><%= link_to 'Edit', edit_country_path(country) %></td>
-        <td><%= link_to 'Destroy', country, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', country :class=>"btn btn-info"%></td>
+        <td><%= link_to 'Edit', edit_country_path(country) :class=>"btn btn-warning"%></td>
+        <td><%= link_to 'Destroy', country, method: :delete, data: { confirm: 'Are you sure?' } :class=>"btn btn-danger"%></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Country', new_country_path %>
+<%= link_to 'New Country', new_country_path, :class=>"btn btn-default"%>
