@@ -6,7 +6,9 @@ class User < ApplicationRecord
   belongs_to :company
   belongs_to :user_role
   has_many :images, as: :imagable
-
+  validates :company_id, presence: true
+  validates :role_id, presence: true
+  validates :first_name, presence: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 end
