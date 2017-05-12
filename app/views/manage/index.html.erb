@@ -26,8 +26,16 @@
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
         <td><%= user.email %></td>
-        <td><%= Company.find(user.company_id).name %></td>
-        <td><%= UserRole.find(user.role_id).role_name %></td>
+        <td>
+        <%if user.company_id.present?%>
+        <%= Company.find(user.company_id).name %>
+        <% end %>
+        </td>
+        <td>
+        <%if user.company_id.present?%>
+        <%= UserRole.find(user.role_id).role_name %>
+        <% end %>
+        </td>
         <td><%= user.start_date %></td>
         <td><%= user.end_date %></td>
         <td><%= user.monthly_charge %></td>
