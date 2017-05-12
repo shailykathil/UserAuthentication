@@ -6,13 +6,14 @@ class ManageController < ApplicationController
   end
 
   def show
-  end
+   end
 
   def new
     @user = User.new
   end
 
   def edit
+      @user = User.find(params[:id])
   end
 
   def create

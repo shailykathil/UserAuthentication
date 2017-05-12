@@ -1,6 +1,12 @@
 
 <div class ="container">
-<%= form_for @user, url: manage_index_path do |f| %>
+<% if @user.id.present?%>
+  <% path = "/manage/#{@user.id}"%>
+<% else %>
+  <% path=  manage_index_path %>  
+<% end %>
+
+  <%= form_for( @user, url: path ) do |f| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this company from being saved:</h2>
