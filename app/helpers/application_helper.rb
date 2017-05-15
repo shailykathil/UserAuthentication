@@ -7,9 +7,13 @@ module ApplicationHelper
        end
 	end
 
-    def user_permission_user?
-       if current_user 
-         UserRole.find(current_user.role_id).role_name == "User"
+	def normaluser_check(user, curr_user)
+       if UserRole.find(current_user.role_id).role_name == "User"
+			if  user.id == curr_user.id
+			true
+			else
+			false
+			end 
        else
        false
        end
@@ -21,13 +25,11 @@ module ApplicationHelper
 			  true
 			else
 			  false
-			end
-		elsif UserRole.find(curr_user.role_id).role_name == "Admin" 
-			
+			end			
 
 		else
-
-
+			false
 		end
 	end
+	
 end

@@ -1,4 +1,5 @@
 class ManageController < ApplicationController
+    before_action :authenticate_user!
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -51,7 +52,6 @@ class ManageController < ApplicationController
       format.json { head :no_content }
     end
   end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
