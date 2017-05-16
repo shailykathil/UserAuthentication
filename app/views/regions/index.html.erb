@@ -15,7 +15,9 @@
       <tr>
         <td><%= region.region_name %></td>
         <td><%= link_to 'Show', region  ,:class=>"btn btn-info"%></td>
-        <td><%= link_to 'Edit', edit_region_path(region)  ,:class=>"btn btn-warning"%></td>
+        <td>
+         <%= link_to 'Edit', "#pp", :remote => true ,:class=>"btn btn-warning", onclick: "region_fun(#{region.id})"%>
+        </td>
         <td><%= link_to 'Destroy', region, method: :delete, data: { confirm: 'Are you sure?' }  ,:class=>"btn btn-default"%></td>
       </tr>
     <% end %>
@@ -25,3 +27,14 @@
 <br>
 
 <%= link_to 'New Region', new_region_path ,:class=>"btn btn-default"%>
+<div class="edit-region">
+  
+</div>
+<script type="text/javascript">
+  function region_fun(argument) {
+    $.ajax({
+    url: "/regions/"+ argument +"/edit_region",
+    type: "GET",
+  });
+  }
+</script>

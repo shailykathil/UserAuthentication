@@ -11,17 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :node_name %>
-    <%= f.text_field :node_name %>
+  <div class="form-group">
+      <%= f.label :node_name, :class=>"col-sm-2 control-label"%>
+       <div class="col-sm-2  inputGroupContainer">
+         <%= f.text_field :node_name, :class => "form-control", :place_holder => "Node Name"%>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :place_id %>
-    <%= f.number_field :place_id %>
+  <div class="form-group">
+    <%= f.label :place_id , :class=>"col-sm-2 control-label"%>
+     <div class="col-sm-2  inputGroupContainer">
+       <%= f.select(:place_id, Place.all.collect {|u| [u.place_name, u.id]},{},:prompt => 'Select Place',:class=>"form-control") %>
+    </div>
   </div>
-
+<br><br><br>
   <div class="actions">
-    <%= f.submit %>
+   <div class="col-sm-2  inputGroupContainer">
+    <%= f.submit :class=>"btn btn-info"%>
+  </div>
   </div>
 <% end %>

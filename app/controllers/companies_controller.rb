@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :set_company, only: [:show, :edit, :update, :destroy, :edit_company]
 
   # GET /companies
   # GET /companies.json
@@ -20,7 +20,9 @@ class CompaniesController < ApplicationController
   # GET /companies/1/edit
   def edit
   end
-
+ def edit_company
+  render 'companies/edit_company'
+ end
   # POST /companies
   # POST /companies.json
   def create

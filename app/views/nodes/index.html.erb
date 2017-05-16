@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
-
+<div class="edit-node"></div>
 <h1>Nodes</h1>
-
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Node name</th>
@@ -15,10 +14,10 @@
     <% @nodes.each do |node| %>
       <tr>
         <td><%= node.node_name %></td>
-        <td><%= node.place_id %></td>
-        <td><%= link_to 'Show', node %></td>
-        <td><%= link_to 'Edit', edit_node_path(node) %></td>
-        <td><%= link_to 'Destroy', node, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= Place.find(node.place_id).place_name %></td>
+        <td><%= link_to 'Show', node ,:class=>"btn btn-info"%></td>
+        <td><%= link_to 'Edit', '#op', :remote => true,:class=>"btn btn-warning", onclick: "edit_node_fun(#{node.id})"%></td>
+        <td><%= link_to 'Destroy', node, method: :delete, data: { confirm: 'Are you sure?' } ,:class=>"btn btn-danger"%></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +25,12 @@
 
 <br>
 
-<%= link_to 'New Node', new_node_path %>
+<%= link_to 'New Node', new_node_path, :class=>"btn btn-default"%>
+<script type="text/javascript">
+  function edit_node_fun(argument) {
+    $.ajax({
+      url: "/nodes/"+argument+"/edit_node",
+      type: "GET",
+  });
+  }
+</script>

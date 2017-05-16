@@ -15,7 +15,9 @@
       <tr>
         <td><%= state.state_name %></td>
         <td><%= link_to 'Show', state, :class=>"btn btn-info" %></td>
-        <td><%= link_to 'Edit', edit_state_path(state) ,:class=>"btn btn-warning" %></td>
+        <td>
+        <%= link_to 'Edit', "#i",:remote => true,:class=>"btn btn-warning", onclick: "edit_fun_state(#{state.id});"%>
+        </td>
         <td><%= link_to 'Destroy', state, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger"  %></td>
       </tr>
     <% end %>
@@ -25,3 +27,13 @@
 <br>
 
 <%= link_to 'New State', new_state_path, :class=>"btn btn-default" %>
+<div class="edit-states">
+</div>
+<script type="text/javascript">
+  function edit_fun_state(argument) {
+    $.ajax({
+    url: "/states/"+ argument +"/edit_state",
+    type: "GET",
+  });
+  }
+</script>

@@ -27,7 +27,8 @@
         <td><%= company.start_date %></td>
         <td><%= company.active %></td>
         <td><%= link_to 'Show', company, :class=>"btn btn-info" %></td>
-        <td><%= link_to 'Edit', edit_company_path(company), :class=>"btn btn-default"%></td>
+        <td> <%= link_to 'Edit', "#iop",:remote => true, :class=>"btn btn-default", onclick: "edit_fun(#{company.id});"%>
+        </td>
         <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-warning" %></td>
       </tr>
     <% end %>
@@ -37,3 +38,14 @@
 <br>
 
 <%= link_to 'New Company', new_company_path, :class=>"btn btn-default" %>
+ <div class="edit-container">
+ </div>
+
+<script type="text/javascript">
+  function edit_fun(argument) {
+    $.ajax({
+    url: "/companies/"+ argument +"/edit_company",
+    type: "GET",
+  });
+  }
+</script>

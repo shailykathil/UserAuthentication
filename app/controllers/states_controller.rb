@@ -1,5 +1,5 @@
 class StatesController < ApplicationController
-  before_action :set_state, only: [:show, :edit, :update, :destroy]
+  before_action :set_state, only: [:show, :edit, :update, :destroy, :edit_state]
 
   # GET /states
   # GET /states.json
@@ -20,7 +20,9 @@ class StatesController < ApplicationController
   # GET /states/1/edit
   def edit
   end
-
+   def edit_state
+    render 'states/edit_state'
+   end
   # POST /states
   # POST /states.json
   def create
